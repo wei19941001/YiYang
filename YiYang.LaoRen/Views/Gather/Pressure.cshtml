@@ -1,0 +1,55 @@
+﻿@{
+  ViewBag.Title = "血压图 - ";
+}
+<canvas id="myChart" width="400" height="240"></canvas>
+
+@section styles{
+  <link href="~/Content/Chart.min.css" rel="stylesheet" />
+  <style>
+  </style>
+}
+@section scripts{
+  <script src="~/Scripts/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    $$(function () {
+      show();
+    });
+    function show() {
+      $$.jsonResultGetHandle('/Gather/PressureData', null, function (data) {
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: data,
+          options: {
+            title: {
+              text: '血压图',
+            },
+            scales: {
+              yAxes: [
+                {
+                  position: 'left',
+                  id: 'y-axis-gao',
+                  ticks: {
+                    min: 0,  //最小值
+                    max: 155  //最大值
+                  },
+                  stacked: true
+                },
+                {
+                  position: 'right',
+                  id: 'y-axis-di',
+                  ticks: {
+                    min: 0,  //最小值
+                    max: 155  //最大值
+                  },
+                  stacked: true
+                }
+              ]
+            }
+          }
+        })
+      });
+      setTimeout('show()', 5000);
+    }
+  </script>
+}

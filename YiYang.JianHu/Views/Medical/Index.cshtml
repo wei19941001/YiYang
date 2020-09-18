@@ -1,0 +1,27 @@
+﻿@using YiYang.Model
+@model List<MedicalInfo>
+@{
+  ViewBag.Title = "电子病历 - ";
+}
+<h3 class="subtitle">电子病历</h3>
+@if (Model.Count == 0)
+{
+  <p class="nodata">监护人未添加老人病历</p>
+}
+else
+{
+  foreach (MedicalInfo medical in Model)
+  {
+    <div class="mui-card">
+      <div class="mui-card-header">诊断日期：@medical.DiagnoseDate.ToString("yyyy-MM-dd")</div>
+      <div class="mui-card-content">
+        <div class="mui-card-content-inner">
+          <p>主诉：@medical.ZhuSu</p>
+          <p>检查：@medical.JianCha</p>
+          <p>诊断：@medical.ZhenDuan</p>
+          <p>处理：@medical.ChuLi</p>
+        </div>
+      </div>
+    </div>
+  }
+}

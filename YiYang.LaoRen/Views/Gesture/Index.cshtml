@@ -1,0 +1,41 @@
+﻿@{
+  ViewBag.Title = "手势密码登录";
+}
+<h3 class="subtitle">手势密码登录</h3>
+<div class="mui-card" id="gesture-box">
+  <div class="mui-card-content">
+    <div id="holder" class="mui-locker" data-locker-options='{"ringColor":"rgba(210,210,210,1)","fillColor":"#ffffff","pointColor":"rgba(0,136,204,1)","lineColor":"rgba(0,136,204,1)"}' data-locker-width='300' data-locker-height='300'></div>
+  </div>
+</div>
+@section styles{
+  <style>
+    #holder { width: 300px; height: 300px; border: solid 1px #bbbbbb; border-radius: 5px; margin: 1em auto; }
+  </style>
+}
+@section scripts{
+  <script src="~/mui/js/mui.locker.js"></script>
+  <script>
+    $$(function () {
+      var $$cno = '@ViewData["CardNo"]';
+      // 绘制手势密码
+      (function ($, doc) {
+        $.init();
+        var holder = doc.querySelector('#holder');
+        //处理事件
+        holder.addEventListener('done', function (event) {
+          var rs = event.detail;
+          if (rs.points.length < 5 || rs.points.length > 10) {
+            $.toast('请绘制5~10个节点', { duration: 'long', type: 'div' });
+            rs.sender.clear();
+            return;
+          }
+          var $$ges = rs.points.join('');
+          rs.sender.clear();
+          $$.jsonResultPostHandle('/Gesture', { cno: $$cno, ges: $$ges }, function () {
+            window.location.href = '/';
+          });
+        });
+      }(mui, document));
+    });
+  </script>
+}

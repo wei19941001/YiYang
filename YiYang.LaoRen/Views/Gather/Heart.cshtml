@@ -1,0 +1,44 @@
+﻿@{
+  ViewBag.Title = "心率图 - ";
+}
+<canvas id="myChart" width="400" height="240"></canvas>
+
+@section styles{
+  <link href="~/Content/Chart.min.css" rel="stylesheet" />
+  <style>
+  </style>
+}
+@section scripts{
+  <script src="~/Scripts/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    $$(function () {
+      show();
+    });
+    function show() {
+      $$.jsonResultGetHandle('/Gather/HeartData', null, function (data) {
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: data,
+          options: {
+            title: {
+              text: '心率图',
+            },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    min: 0,  //最小值
+                    max: 120  //最大值
+                  },
+                  stacked: true
+                }
+              ]
+            }
+          }
+        });
+        setTimeout('show()', 5000);
+      });
+    }
+  </script>
+}

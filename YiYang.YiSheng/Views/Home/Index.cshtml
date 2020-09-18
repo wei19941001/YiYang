@@ -1,0 +1,52 @@
+﻿@using YiYang.Model
+@using YiYang.Common
+@{
+  ViewBag.Title = "用户主页";
+  UserInfo user = ViewData["UserInfo"] as UserInfo;
+}
+<div id="setting" class="mui-page mui-page-center">
+  <div class="mui-page-content">
+    <div class="mui-scroll-wrapper" data-scroll="2">
+      <div class="mui-scroll" style="transform: translate3d(0px, 0px, 0px) translateZ(0px);">
+        <ul class="mui-table-view mui-table-view-chevron">
+          <li class="mui-table-view-cell mui-media">
+            <img class="mui-media-object mui-pull-left head-img" id="head-img" src="~/Content/image/logo.png" />
+            <div class="mui-media-body">
+              @user.Name.MaskName()
+              <p class="mui-ellipsis">@user.Mobile.MaskMobileNo()</p>
+            </div>
+          </li>
+        </ul>
+        <ul class="mui-table-view mui-table-view-chevron">
+          <li class="mui-table-view-cell">
+            <a href="@Url.Action("Index","Examination")" class="mui-navigate-right">体检信息</a>
+          </li>
+          <li class="mui-table-view-cell">
+            <a href="@Url.Action("Index","Medical")" class="mui-navigate-right">电子病历</a>
+          </li>
+        </ul>
+        <ul class="mui-table-view mui-table-view-chevron">
+          <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="javascript:;">健康监控</a>
+            <ul class="mui-table-view mui-table-view-chevron">
+              <li class="mui-table-view-cell"><a class="mui-navigate-right" href="@Url.Action("Heart","Gather")">心率图</a></li>
+              <li class="mui-table-view-cell"><a class="mui-navigate-right" href="@Url.Action("Pressure","Gather")">血压图</a></li>
+              <li class="mui-table-view-cell"><a class="mui-navigate-right" href="@Url.Action("Sugar","Gather")">血糖图</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="mui-table-view mui-table-view-chevron">
+          <li class="mui-table-view-cell">
+            <a href="javascript:;" class="mui-navigate-right">版本号<i class="mui-pull-right update">V1.0</i></a>
+          </li>
+        </ul>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell" style="text-align: center;">
+            <a href="@Url.Action("Index","Login")">注销</a>
+          </li>
+        </ul>
+      </div>
+      <div class="mui-scrollbar mui-scrollbar-vertical"><div class="mui-scrollbar-indicator" style="transition-duration: 0ms; display: none; height: 686px; transform: translate3d(0px, 0px, 0px) translateZ(0px);"></div></div>
+    </div>
+  </div>
+</div>

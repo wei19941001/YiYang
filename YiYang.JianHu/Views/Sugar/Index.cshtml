@@ -1,0 +1,65 @@
+﻿@using YiYang.Model
+@{
+  ViewBag.Title = "采集血糖信息 - ";
+  UserInfo user = ViewData["UserInfo"] as UserInfo;
+}
+<h3 class="subtitle">采集血糖信息</h3>
+@using (Html.BeginForm("Index", "Sugar", FormMethod.Post, new { role = "form", id = "form-sugar" }))
+{
+  @Html.AntiForgeryToken()
+<div class="mui-content-padded">
+  <div class="mui-input-row">
+    <label>血糖值</label>
+    <input type="text" class="mui-input-clear" placeholder="单位：mmol/l" name="XueTang" value="">
+  </div>
+  <div class="mui-input-row">
+    <label>采集日期</label>
+    <input type="text" id="GatherDate" class="mui-input-clear" placeholder="请选择采集日期" name="GatherDate" data-options='{}' value="">
+  </div>
+</div>
+  <div class="mui-content-padded">
+    <input type="hidden" name="Id" value="@user.Id" readonly>
+    <button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="sugar-btn">保存</button>
+  </div>
+}
+@section styles{
+  <link href="~/mui/css/mui.picker.min.css" rel="stylesheet" />
+}
+@section scripts{
+  <script src="~/mui/js/mui.picker.min.js"></script>
+  <script>
+    (function ($) {
+      $.init();
+      $('#GatherDate')[0].onfocus = function () {
+        var _self = this;
+        if (_self.picker) {
+          _self.picker.show(function (rs) {
+            _self.value = rs.text;
+            _self.picker.dispose();
+            _self.picker = null;
+          });
+        }
+        else {
+          var optionsJson = this.getAttribute('data-options') || '{}';
+          var options = JSON.parse(optionsJson);
+          _self.picker = new $.DtPicker(options);
+          _self.picker.show(function (rs) {
+            _self.value = rs.text;
+            _self.picker.dispose();
+            _self.picker = null;
+          });
+        }
+      }
+    })(mui);
+    $$(function () {
+      // 异步提交表单
+      $$('#sugar-btn').on('click', function () {
+        $$('#form-sugar').ajaxSubmitForm(function () {
+          mui.alert('血糖信息采集成功！', '提示', '确定', function () {
+            window.location.href = '/';
+          });
+        });
+      });
+    });
+  </script>
+}

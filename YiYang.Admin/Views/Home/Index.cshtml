@@ -1,0 +1,55 @@
+﻿<section class="content-header">
+  <h1>控制台<small> 服务器状态、数据统计</small></h1>
+  <ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> 主页</a></li>
+    <li class="active">控制台</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <i class="fa fa-server"></i>
+          <h3 class="box-title">服务器状态</h3>
+        </div>
+        <div class="box-body">
+          <table class="table table-bordered table-condensed table-striped table-hover">
+            <thead>
+              <tr>
+                <th style="width: 30%" class="text-center">项目</th>
+                <th class="text-center">参考值</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>操作系统</td>
+                <td>@Environment.OSVersion.ToString()</td>
+              </tr>
+              <tr>
+                <td>当前时间</td>
+                <td><span id="ServerTime" data-time="@DateTime.Now.ToString("MM dd,yyyy HH:mm:ss")">@DateTime.Now.ToString("yyyy年MM月dd日 HH:mm:ss")</span></td>
+              </tr>
+              <tr>
+                <td>IIS版本</td>
+                <td>@Request.ServerVariables["Server_SoftWare"].ToString()</td>
+              </tr>
+              <tr>
+                <td>.NET Framework版本</td>
+                <td>@string.Concat(new object[] { Environment.Version.Major, ".", Environment.Version.Minor, Environment.Version.Build, ".", Environment.Version.Revision })</td>
+              </tr>
+              <tr>
+                <td>CPU总数</td>
+                <td>@Environment.GetEnvironmentVariable("NUMBER_OF_PROCESSORS").ToString()</td>
+              </tr>
+              <tr>
+                <td>虚拟内存</td>
+                <td>@((Environment.WorkingSet / 1024).ToString() + "M")</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

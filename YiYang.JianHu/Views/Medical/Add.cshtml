@@ -1,0 +1,73 @@
+﻿@using YiYang.Model
+@{
+  ViewBag.Title = "添加病历 - ";
+  UserInfo user = ViewData["UserInfo"] as UserInfo;
+}
+<h3 class="subtitle">添加病历</h3>
+@using (Html.BeginForm("Add", "Medical", FormMethod.Post, new { role = "form", id = "form-medi" }))
+{
+  @Html.AntiForgeryToken()
+  <div class="mui-content-padded">
+    <div class="mui-input-row">
+      <textarea name="ZhuSu" rows="3" placeholder="主诉内容" maxlength="24"></textarea>
+    </div>
+    <div class="mui-input-row">
+      <textarea name="JianCha" rows="4" placeholder="检查及结果" maxlength="36"></textarea>
+    </div>
+    <div class="mui-input-row">
+      <textarea name="ZhenDuan" rows="4" placeholder="诊断结果" maxlength="36"></textarea>
+    </div>
+    <div class="mui-input-row">
+      <textarea name="ChuLi" rows="6" placeholder="处理情况" maxlength="52"></textarea>
+    </div>
+    <div class="mui-input-row">
+      <label>诊断日期</label>
+      <input type="text" id="DiagnoseDate" class="mui-input-clear" placeholder="请选择诊断日期" name="DiagnoseDate" data-options='{"type":"date"}' value="">
+    </div>
+  </div>
+  <div class="mui-content-padded">
+    <input type="hidden" name="Id" value="@user.Id" readonly>
+    <button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="medi-btn">保存</button>
+  </div>
+}
+@section styles{
+  <link href="~/mui/css/mui.picker.min.css" rel="stylesheet" />
+}
+@section scripts{
+  <script src="~/mui/js/mui.picker.min.js"></script>
+  <script>
+    (function ($) {
+      $.init();
+      $('#DiagnoseDate')[0].onfocus = function () {
+        var _self = this;
+        if (_self.picker) {
+          _self.picker.show(function (rs) {
+            _self.value = rs.text;
+            _self.picker.dispose();
+            _self.picker = null;
+          });
+        }
+        else {
+          var optionsJson = this.getAttribute('data-options') || '{}';
+          var options = JSON.parse(optionsJson);
+          _self.picker = new $.DtPicker(options);
+          _self.picker.show(function (rs) {
+            _self.value = rs.text;
+            _self.picker.dispose();
+            _self.picker = null;
+          });
+        }
+      }
+    })(mui);
+    $$(function () {
+      // 异步提交表单
+      $$('#medi-btn').on('click', function () {
+        $$('#form-medi').ajaxSubmitForm(function () {
+          mui.alert('病历信息添加成功！', '提示', '确定', function () {
+            window.location.href = '/';
+          });
+        });
+      });
+    });
+  </script>
+}

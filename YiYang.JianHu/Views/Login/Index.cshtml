@@ -1,0 +1,50 @@
+﻿
+@{
+  ViewBag.Title = "身份识别卡登录 - ";
+}
+<h3 class="subtitle">身份识别卡登录</h3>
+<form>
+  <div class="scan-box">
+    <input type="text" id="login-card" maxlength="15" placeholder="请输入/扫描身份识别卡号" />
+    <a><i class="fa fa-barcode"></i></a>
+    <a><i class="fa fa-upload"></i></a>
+  </div>
+  <button type="button" class="mui-btn mui-btn-primary" id="login-btn">登 录</button>
+</form>
+@section styles{
+  <style>
+    .subtitle { margin: 2em auto 1.5em; text-align: center; }
+    .scan-box { width: 94%; height: calc(1.8em + 4px); padding-left: 1em; background-color: #ffffff; border: 1px solid #cccccc; border-top-left-radius: 1.8em; border-bottom-left-radius: 1.8em; margin: 0 auto; }
+      .scan-box input { width: 80%; height: 1.8em; line-height: 1.8em; border: none; margin: 0; padding: 0; float: left; }
+      .scan-box a { width: 10%; height: calc(1.8em + 2px); display: inline-block; border-left: 1px solid #cccccc; float: left; }
+        .scan-box a i { width: 100%; height: 1.8em; display: block; text-align: center; line-height: 1.8em; color: #666666; }
+    #login-btn { width: 10em; display: block; margin: 3em auto; }
+  </style>
+}
+@section scripts{
+  <script>
+    $$(function () {
+      // 登录
+      $$('#login-btn').on('click', function () {
+        // 获取卡号
+        var $$cno = $$('#login-card').val();
+        if (!$$cno || $$cno.length != 15) {
+          alert('身份识别卡号无效！');
+          return;
+        }
+        // 有效性验证
+        $$.jsonResultPostHandle('/Login/Check', { cno: $$cno }, function () {
+          // 绑定检查
+          $$.jsonResultPostHandle('/Login/Bind', { cno: $$cno }, function (res) {
+            if (!res) {
+              alert('卡号未绑定用户！');
+            }
+            else {
+              window.location.href = '/Gesture?cno=' + $$cno;
+            }
+          });
+        });
+      });
+    });
+  </script>
+}

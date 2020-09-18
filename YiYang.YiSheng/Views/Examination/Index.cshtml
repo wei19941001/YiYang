@@ -1,0 +1,117 @@
+﻿@using YiYang.Model
+@model ExaminationInfo
+@{
+  ViewBag.Title = "查看体检信息 - ";
+}
+<h3 class="subtitle">查看体检信息</h3>
+@if (Model == null)
+{
+  <p class="nodata">监护人未提交老人体检信息</p>
+}
+else
+{
+  <div class="mui-card">
+    <div class="mui-card-header">一般状况</div>
+    <div class="mui-card-content">
+      <div class="mui-input-group">
+        <div class="mui-input-row">
+          <label>姓名</label>
+          <p>@Model.UserInfo.Name</p>
+        </div>
+        <div class="mui-input-row">
+          <label>脉率</label>
+          <p>@Model.MaiLv 次/min</p>
+        </div>
+        <div class="mui-input-row">
+          <label>低血压</label>
+          <p>@Model.DiYa mmHg</p>
+        </div>
+        <div class="mui-input-row">
+          <label>高血压</label>
+          <p>@Model.GaoYa mmHg</p>
+        </div>
+        <div class="mui-input-row">
+          <label>身高</label>
+          <p>@Model.ShenGao cm</p>
+        </div>
+        <div class="mui-input-row">
+          <label>体重</label>
+          <p>@Model.TiZhong kg</p>
+        </div>
+        <div class="mui-input-row">
+          <label>听力</label>
+          <p>@Model.TingLi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mui-card">
+    <div class="mui-card-header">症状</div>
+    <div class="mui-card-content">
+      <div class="mui-input-group">
+        <div class="mui-input-row">
+          <label>认知障碍</label>
+          <p>@(Model.RenZhi ? "是" : "否")</p>
+        </div>
+        <div class="mui-input-row">
+          <label>抑郁</label>
+          <p>@(Model.YiYu ? "是" : "否")</p>
+        </div>
+        @if (Model.XiaZhi != XiaZhiEnumer.未知)
+        {
+          <div class="mui-input-row">
+            <label>下肢水肿</label>
+            <p>@Model.XiaZhi</p>
+          </div>
+        }
+        @if (Model.LuoYin != LuoYinEnumer.未知)
+        {
+          <div class="mui-input-row">
+            <label>肺罗音</label>
+            <p>@Model.LuoYin</p>
+          </div>
+        }
+        <div class="mui-input-row">
+          <label>症状</label>
+          <p>
+            @{
+              string[] zzArr = Model.ZhengZhuang.Split(',');
+              foreach (string zz in zzArr)
+              {
+                <span class="zhengzhuang">@zz</span>
+              }
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mui-card">
+    <div class="mui-card-header">生活方式</div>
+    <div class="mui-card-content">
+      <div class="mui-input-group">
+        <div class="mui-input-row">
+          <label>锻炼</label>
+          <p>@Model.DuanLian</p>
+        </div>
+        <div class="mui-input-row">
+          <label>生活自理</label>
+          <p>@Model.ZiLi </p>
+        </div>
+        <div class="mui-input-row">
+          <label>吸烟</label>
+          <p>@(Model.XiYan ? "是" : "否")</p>
+        </div>
+        <div class="mui-input-row">
+          <label>饮酒</label>
+          <p>@(Model.YinJiu ? "是" : "否")</p>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+@section styles{
+  <style>
+    .zhengzhuang { display: inline-block; margin-right: 5px; border: 1px solid #999999; border-radius: 0.2em; padding: 0.05em 0.2em; font-size: 0.8em; }
+  </style>
+}

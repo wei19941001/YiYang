@@ -1,0 +1,279 @@
+﻿@using YiYang.Model
+@{
+  ViewBag.Title = "更新体检信息 - ";
+  UserInfo user = ViewData["UserInfo"] as UserInfo;
+  ExaminationInfo examination = ViewData["ExaminationInfo"] as ExaminationInfo;
+}
+<h3 class="subtitle">更新体检信息</h3>
+@using (Html.BeginForm("Index", "Examination", FormMethod.Post, new { role = "form", id = "form-exam" }))
+{
+  @Html.AntiForgeryToken()
+  <h5 class="mui-content-padded">一般状况</h5>
+  if (examination == null)
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>脉率</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：次/min" name="MaiLv" value="">
+      </div>
+      <div class="mui-input-row">
+        <label>血低压</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：mmHg" name="DiYa" value="">
+      </div>
+      <div class="mui-input-row">
+        <label>血高压</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：mmHg" name="GaoYa" value="">
+      </div>
+      <div class="mui-input-row">
+        <label>身高</label>
+        <input type="text" class="mui-input-clear" placeholder="单位：cm" name="ShenGao" value="">
+      </div>
+      <div class="mui-input-row">
+        <label>体重</label>
+        <input type="text" class="mui-input-clear" placeholder="单位：kg" name="TiZhong" value="">
+      </div>
+      <div class="mui-input-row">
+        <label>听力</label>
+        <select name="TingLi">
+          <option value="0">- 请选择 -</option>
+          <option value="1">可以听见</option>
+          <option value="2">听不清楚</option>
+          <option value="3">无法听见</option>
+        </select>
+      </div>
+    </div>
+  }
+  else
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>脉率</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：次/min" name="MaiLv" value="@(examination.MaiLv?.ToString())">
+      </div>
+      <div class="mui-input-row">
+        <label>血低压</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：mmHg" name="DiYa" value="@(examination.DiYa?.ToString())">
+      </div>
+      <div class="mui-input-row">
+        <label>血高压</label>
+        <input type="number" class="mui-input-clear" placeholder="单位：mmHg" name="GaoYa" value="@(examination.GaoYa?.ToString())">
+      </div>
+      <div class="mui-input-row">
+        <label>身高</label>
+        <input type="text" class="mui-input-clear" placeholder="单位：cm" name="ShenGao" value="@(examination.ShenGao?.ToString())">
+      </div>
+      <div class="mui-input-row">
+        <label>体重</label>
+        <input type="text" class="mui-input-clear" placeholder="单位：kg" name="TiZhong" value="@(examination.TiZhong?.ToString())">
+      </div>
+      <div class="mui-input-row">
+        <label>听力</label>
+        <select name="TingLi">
+          <option value="0" @Html.Raw(examination.TingLi == TingLiEnumer.未知 ? "selected" : "")>- 请选择 -</option>
+          <option value="1" @Html.Raw(examination.TingLi == TingLiEnumer.听得见 ? "selected" : "")>可以听见</option>
+          <option value="2" @Html.Raw(examination.TingLi == TingLiEnumer.听不清 ? "selected" : "")>听不清楚</option>
+          <option value="3" @Html.Raw(examination.TingLi == TingLiEnumer.无法听见 ? "selected" : "")>无法听见</option>
+        </select>
+      </div>
+    </div>
+  }
+  <h5 class="mui-content-padded">生活方式</h5>
+  if (examination == null)
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>锻炼</label>
+        <select name="DuanLian">
+          <option value="0">- 请选择 -</option>
+          <option value="1">不锻炼</option>
+          <option value="2">偶尔</option>
+          <option value="3">每周一次以上</option>
+          <option value="4">每天锻炼</option>
+        </select>
+      </div>
+      <div class="mui-input-row">
+        <label>生活自理</label>
+        <select name="ZiLi">
+          <option value="0">- 请选择 -</option>
+          <option value="1">可自理</option>
+          <option value="2">轻度依赖</option>
+          <option value="3">中度依赖</option>
+          <option value="4">不能自理</option>
+        </select>
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>吸烟</label>
+        <input type="checkbox" name="XiYan" value="true" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>饮酒</label>
+        <input type="checkbox" name="YinJiu" value="true" />
+      </div>
+    </div>
+  }
+  else
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>锻炼</label>
+        <select name="DuanLian">
+          <option value="0" @Html.Raw(examination.DuanLian == DuanLianEnumer.未知 ? "selected" : "")>- 请选择 -</option>
+          <option value="1" @Html.Raw(examination.DuanLian == DuanLianEnumer.不锻炼 ? "selected" : "")>不锻炼</option>
+          <option value="2" @Html.Raw(examination.DuanLian == DuanLianEnumer.偶尔 ? "selected" : "")>偶尔</option>
+          <option value="3" @Html.Raw(examination.DuanLian == DuanLianEnumer.每周一次以上 ? "selected" : "")>每周一次以上</option>
+          <option value="4" @Html.Raw(examination.DuanLian == DuanLianEnumer.每天锻炼 ? "selected" : "")>每天锻炼</option>
+        </select>
+      </div>
+      <div class="mui-input-row">
+        <label>生活自理</label>
+        <select name="ZiLi">
+          <option value="0" @Html.Raw(examination.ZiLi == ZiLiEnumer.未知 ? "selected" : "")>- 请选择 -</option>
+          <option value="1" @Html.Raw(examination.ZiLi == ZiLiEnumer.可自理 ? "selected" : "")>可自理</option>
+          <option value="2" @Html.Raw(examination.ZiLi == ZiLiEnumer.轻度依赖 ? "selected" : "")>轻度依赖</option>
+          <option value="3" @Html.Raw(examination.ZiLi == ZiLiEnumer.中度依赖 ? "selected" : "")>中度依赖</option>
+          <option value="4" @Html.Raw(examination.ZiLi == ZiLiEnumer.不能自理 ? "selected" : "")>不能自理</option>
+        </select>
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>吸烟</label>
+        <input type="checkbox" name="XiYan" value="true" @Html.Raw(examination.XiYan ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>饮酒</label>
+        <input type="checkbox" name="YinJiu" value="true" @Html.Raw(examination.YinJiu ? "checked" : "") />
+      </div>
+    </div>
+  }
+  <h5 class="mui-content-padded">症状</h5>
+  if (examination == null)
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>下肢水肿</label>
+        <select name="XiaZhi">
+          <option value="0">- 请选择 -</option>
+          <option value="1">无</option>
+          <option value="2">单侧</option>
+          <option value="3">双侧不对称</option>
+          <option value="4">双侧对称</option>
+        </select>
+      </div>
+      <div class="mui-input-row">
+        <label>肺罗音</label>
+        <select name="LuoYin">
+          <option value="0">- 请选择 -</option>
+          <option value="1">无</option>
+          <option value="2">干罗音</option>
+          <option value="3">湿罗音</option>
+        </select>
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>认知障碍</label>
+        <input type="checkbox" name="RenZhi" value="true" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>抑郁</label>
+        <input type="checkbox" name="YiYu" value="true" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>头晕头痛</label>
+        <input type="checkbox" name="ZhengZhuang" value="头晕头痛" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>胸闷胸痛</label>
+        <input type="checkbox" name="ZhengZhuang" value="胸闷胸痛" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>慢性咳嗽</label>
+        <input type="checkbox" name="ZhengZhuang" value="慢性咳嗽" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>呼吸困难</label>
+        <input type="checkbox" name="ZhengZhuang" value="呼吸困难" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>体重下降</label>
+        <input type="checkbox" name="ZhengZhuang" value="体重下降" />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>手脚麻木</label>
+        <input type="checkbox" name="ZhengZhuang" value="手脚麻木" />
+      </div>
+    </div>
+  }
+  else
+  {
+    <div class="mui-input-group">
+      <div class="mui-input-row">
+        <label>下肢水肿</label>
+        <select name="XiaZhi">
+          <option value="0" @Html.Raw(examination.XiaZhi == XiaZhiEnumer.未知 ? "selected" : "")>- 请选择 -</option>
+          <option value="1" @Html.Raw(examination.XiaZhi == XiaZhiEnumer.无 ? "selected" : "")>无</option>
+          <option value="2" @Html.Raw(examination.XiaZhi == XiaZhiEnumer.单侧 ? "selected" : "")>单侧</option>
+          <option value="3" @Html.Raw(examination.XiaZhi == XiaZhiEnumer.双侧不对称 ? "selected" : "")>双侧不对称</option>
+          <option value="4" @Html.Raw(examination.XiaZhi == XiaZhiEnumer.双侧对称 ? "selected" : "")>双侧对称</option>
+        </select>
+      </div>
+      <div class="mui-input-row">
+        <label>肺罗音</label>
+        <select name=" ">
+          <option value="0" @Html.Raw(examination.LuoYin == LuoYinEnumer.未知 ? "selected" : "")>- 请选择 -</option>
+          <option value="1" @Html.Raw(examination.LuoYin == LuoYinEnumer.无 ? "selected" : "")>无</option>
+          <option value="2" @Html.Raw(examination.LuoYin == LuoYinEnumer.干罗音 ? "selected" : "")>干罗音</option>
+          <option value="3" @Html.Raw(examination.LuoYin == LuoYinEnumer.湿罗音 ? "selected" : "")>湿罗音</option>
+        </select>
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>认知障碍</label>
+        <input type="checkbox" name="RenZhi" value="true" @Html.Raw(examination.RenZhi ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>抑郁</label>
+        <input type="checkbox" name="YiYu" value="true" @Html.Raw(examination.YiYu ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>头晕头痛</label>
+        <input type="checkbox" name="ZhengZhuang" value="头晕头痛" @Html.Raw(examination.ZhengZhuang.Contains("头晕头痛") ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>胸闷胸痛</label>
+        <input type="checkbox" name="ZhengZhuang" value="胸闷胸痛" @Html.Raw(examination.ZhengZhuang.Contains("胸闷胸痛") ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>慢性咳嗽</label>
+        <input type="checkbox" name="ZhengZhuang" value="慢性咳嗽" @Html.Raw(examination.ZhengZhuang.Contains("慢性咳嗽") ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>呼吸困难</label>
+        <input type="checkbox" name="ZhengZhuang" value="呼吸困难" @Html.Raw(examination.ZhengZhuang.Contains("呼吸困难") ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>体重下降</label>
+        <input type="checkbox" name="ZhengZhuang" value="体重下降" @Html.Raw(examination.ZhengZhuang.Contains("体重下降") ? "checked" : "") />
+      </div>
+      <div class="mui-input-row mui-checkbox mui-left">
+        <label>手脚麻木</label>
+        <input type="checkbox" name="ZhengZhuang" value="手脚麻木" @Html.Raw(examination.ZhengZhuang.Contains("手脚麻木") ? "checked" : "") />
+      </div>
+    </div>
+  }
+  <br />
+  <div class="mui-content-padded">
+    <input type="hidden" name="Id" value="@user.Id" readonly>
+    <button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="exam-btn">保存</button>
+  </div>
+}
+@section scripts{
+  <script>
+    $$(function () {
+      // 异步提交表单
+      $$('#exam-btn').on('click', function () {
+        $$('#form-exam').ajaxSubmitForm(function () {
+          mui.alert('体检信息保存成功！', '提示', '确定', function () {
+            window.location.href = '/';
+          });
+        });
+      });
+    });
+  </script>
+}

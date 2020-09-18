@@ -1,0 +1,4 @@
+﻿安装命令：D:\WindowService\InstallUtil.exe D:\WindowService\YiYang.Generator.exe
+启动服务命令：net start 医养管家数据
+关闭服务命令：net stop 医养管家数据
+卸载服务命令：D:\WindowService\InstallUtil.exe -u D:\WindowService\YiYang.Generator.exe

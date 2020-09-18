@@ -1,0 +1,106 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.Model", "YiYang.Model\YiYang.Model.csproj", "{3A80ABA0-092D-4C44-A35D-864D3623D6C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.DAL", "YiYang.DAL\YiYang.DAL.csproj", "{E2D15B55-2926-40E6-AD67-8AF492D1B898}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.BLL", "YiYang.BLL\YiYang.BLL.csproj", "{87360434-3762-4C39-A462-B64D1063A5DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.YiSheng", "YiYang.YiSheng\YiYang.YiSheng.csproj", "{9F9D5F5A-28BA-4B39-8CB1-E75DD53C2EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.LaoRen", "YiYang.LaoRen\YiYang.LaoRen.csproj", "{1DA10042-3613-488E-B6A6-BA66AD346B6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.JianHu", "YiYang.JianHu\YiYang.JianHu.csproj", "{7D1B8668-BEE5-4E64-9967-F998E5C3124A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.Admin", "YiYang.Admin\YiYang.Admin.csproj", "{478270E3-DD0A-40FF-8DED-E9A3055555E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.Common", "YiYang.Common\YiYang.Common.csproj", "{54A8411B-C5DB-4B0F-8206-391910C314B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YiYang.Generator", "YiYang.Generator\YiYang.Generator.csproj", "{55CC9BA6-B540-4FA1-87E1-17D38BC3DD9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A80ABA0-092D-4C44-A35D-864D3623D6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A80ABA0-092D-4C44-A35D-864D3623D6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A80ABA0-092D-4C44-A35D-864D3623D6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A80ABA0-092D-4C44-A35D-864D3623D6C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D15B55-2926-40E6-AD67-8AF492D1B898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D15B55-2926-40E6-AD67-8AF492D1B898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D15B55-2926-40E6-AD67-8AF492D1B898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D15B55-2926-40E6-AD67-8AF492D1B898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87360434-3762-4C39-A462-B64D1063A5DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87360434-3762-4C39-A462-B64D1063A5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87360434-3762-4C39-A462-B64D1063A5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87360434-3762-4C39-A462-B64D1063A5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9D5F5A-28BA-4B39-8CB1-E75DD53C2EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9D5F5A-28BA-4B39-8CB1-E75DD53C2EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9D5F5A-28BA-4B39-8CB1-E75DD53C2EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9D5F5A-28BA-4B39-8CB1-E75DD53C2EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA10042-3613-488E-B6A6-BA66AD346B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA10042-3613-488E-B6A6-BA66AD346B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA10042-3613-488E-B6A6-BA66AD346B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA10042-3613-488E-B6A6-BA66AD346B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1B8668-BEE5-4E64-9967-F998E5C3124A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1B8668-BEE5-4E64-9967-F998E5C3124A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1B8668-BEE5-4E64-9967-F998E5C3124A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1B8668-BEE5-4E64-9967-F998E5C3124A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478270E3-DD0A-40FF-8DED-E9A3055555E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478270E3-DD0A-40FF-8DED-E9A3055555E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478270E3-DD0A-40FF-8DED-E9A3055555E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478270E3-DD0A-40FF-8DED-E9A3055555E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A8411B-C5DB-4B0F-8206-391910C314B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A8411B-C5DB-4B0F-8206-391910C314B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A8411B-C5DB-4B0F-8206-391910C314B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A8411B-C5DB-4B0F-8206-391910C314B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CC9BA6-B540-4FA1-87E1-17D38BC3DD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CC9BA6-B540-4FA1-87E1-17D38BC3DD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CC9BA6-B540-4FA1-87E1-17D38BC3DD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CC9BA6-B540-4FA1-87E1-17D38BC3DD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E95352E6-C12B-4735-B450-C2D051D6853B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://anley.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = YiYang.Model\\YiYang.Model.csproj
+		SccProjectName1 = YiYang.Model
+		SccLocalPath1 = YiYang.Model
+		SccProjectUniqueName2 = YiYang.DAL\\YiYang.DAL.csproj
+		SccProjectName2 = YiYang.DAL
+		SccLocalPath2 = YiYang.DAL
+		SccProjectUniqueName3 = YiYang.BLL\\YiYang.BLL.csproj
+		SccProjectName3 = YiYang.BLL
+		SccLocalPath3 = YiYang.BLL
+		SccProjectUniqueName4 = YiYang.YiSheng\\YiYang.YiSheng.csproj
+		SccProjectName4 = YiYang.YiSheng
+		SccLocalPath4 = YiYang.YiSheng
+		SccProjectUniqueName5 = YiYang.LaoRen\\YiYang.LaoRen.csproj
+		SccProjectName5 = YiYang.LaoRen
+		SccLocalPath5 = YiYang.LaoRen
+		SccProjectUniqueName6 = YiYang.JianHu\\YiYang.JianHu.csproj
+		SccProjectName6 = YiYang.JianHu
+		SccLocalPath6 = YiYang.JianHu
+		SccProjectUniqueName7 = YiYang.Admin\\YiYang.Admin.csproj
+		SccProjectName7 = YiYang.Admin
+		SccLocalPath7 = YiYang.Admin
+		SccProjectUniqueName8 = YiYang.Common\\YiYang.Common.csproj
+		SccProjectName8 = YiYang.Common
+		SccLocalPath8 = YiYang.Common
+		SccProjectUniqueName9 = YiYang.Generator\\YiYang.Generator.csproj
+		SccProjectName9 = YiYang.Generator
+		SccLocalPath9 = YiYang.Generator
+	EndGlobalSection
+EndGlobal
